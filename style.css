@@ -1,0 +1,322 @@
+/* ===== GLOBAL ===== */
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  text-align:center;
+}
+
+.bg{
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.center{
+  text-align:center;
+}
+
+/* ===== BUTTON ===== */
+.btn{
+  padding:15px 40px;
+  font-size:20px;
+  border:none;
+  border-radius:30px;
+  background:#ff4d6d;
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.btn:hover{
+  transform:scale(1.1);
+}
+
+/* ===== BIRTHDAY TEXT ===== */
+.birthday-text{
+  color:#c2185b;
+  font-size:48px;
+  margin-top:25px;
+  animation:shine 2s infinite alternate;
+}
+
+/* ===== 🎂 CAKE ===== */
+.cake-container{
+  position:relative;
+  width:180px;
+  margin:20px auto;
+}
+
+/* 🍫 Chocolate Cake Layers */
+.cake-layer{
+  width:180px;
+  height:28px;
+  background:#6b3f26;
+  border-radius:14px;
+  margin:auto;
+
+  opacity:1; /* ALWAYS VISIBLE */
+  transform:translateY(20px);
+  animation:slideUp 0.7s ease forwards;
+}
+
+.bottom{ animation-delay:0.3s; }
+.middle{ animation-delay:1.2s; }
+.top{ animation-delay:2.1s; }
+
+/* 🤍 Vanilla Cream Between Layers */
+.cream-layer{
+  width:160px;
+  height:8px;
+  background:#fff8ee;
+  border-radius:8px;
+  margin:6px auto;
+
+  opacity:1;
+  transform:scaleX(0);
+  animation:creamFill 0.4s ease forwards;
+}
+
+.cream1{ animation-delay:0.8s; }
+.cream2{ animation-delay:1.7s; }
+
+/* 🍦 Cream Drip on Top */
+.cream-drip{
+  position:absolute;
+  top:-6px;
+  left:0;
+  width:100%;
+  height:22px;
+  background:#fff8ee;
+  border-radius:0 0 16px 16px;
+
+  clip-path: polygon(
+    0 0, 100% 0, 100% 55%,
+    85% 70%, 70% 55%,
+    55% 75%, 40% 55%,
+    25% 70%, 10% 55%,
+    0 60%
+  );
+
+  opacity:1;
+  animation:fadeIn 0.4s ease forwards;
+  animation-delay:2.8s;
+}
+
+/* 🕯️ Candle */
+.candle{
+  position:absolute;
+  top:-48px;
+  left:50%;
+  transform:translateX(-50%);
+  width:12px;
+  height:38px;
+  background:white;
+  border-radius:6px;
+
+  opacity:1;
+  animation:fadeIn 0.4s ease forwards;
+  animation-delay:3.2s;
+}
+
+/* 🔥 Flame */
+.flame{
+  position:absolute;
+  top:-12px;
+  left:50%;
+  transform:translateX(-50%);
+  width:12px;
+  height:12px;
+  background:#ffb703;
+  border-radius:50%;
+  animation:flameFlicker 0.3s infinite alternate;
+}
+
+/* ===== CARD (3rd PAGE) ===== */
+.card{
+  background:white;
+  padding:40px;
+  max-width:600px;
+  margin:20px;
+  border-radius:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+  font-size:18px;
+  line-height:1.7;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes slideUp{
+  to{
+    transform:translateY(0);
+  }
+}
+
+@keyframes creamFill{
+  to{
+    transform:scaleX(1);
+  }
+}
+
+@keyframes fadeIn{
+  from{ opacity:0; }
+  to{ opacity:1; }
+}
+
+@keyframes flameFlicker{
+  from{ transform:translateX(-50%) scale(1); }
+  to{ transform:translateX(-50%) scale(1.3); }
+}
+
+@keyframes shine{
+  from{ text-shadow:0 0 5px white; }
+  to{ text-shadow:0 0 20px white; }
+}
+
+
+
+
+/* Birthday Text */
+
+.birthday-text{
+color:#c2185b;
+font-size:50px;
+animation:shine 2s infinite alternate;
+}
+
+/* Card */
+
+.card{
+background:white;
+padding:40px;
+width:60%;
+border-radius:15px;
+box-shadow:0px 10px 30px rgba(0,0,0,0.2);
+}
+
+/* Animations */
+
+@keyframes appear{
+from{opacity:0; transform:translateY(30px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+@keyframes flicker{
+from{transform:scale(1);}
+to{transform:scale(1.2);}
+}
+
+@keyframes shine{
+from{text-shadow:0 0 5px white;}
+to{text-shadow:0 0 20px white;}
+}
+/* 🎀 Message Page Styling */
+
+.message-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.message-card {
+  background: rgba(255, 255, 255, 0.85);
+  max-width: 800px;
+  padding: 50px 45px;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+  animation: appear 1.2s ease forwards;
+}
+
+.message-card h1 {
+  color: #c2185b;
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 36px;
+}
+
+.message-card p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #444;
+}
+
+/* Mobile friendly */
+@media (max-width: 600px) {
+  .message-card {
+    padding: 30px 25px;
+  }
+
+  .message-card h1 {
+    font-size: 28px;
+  }
+
+  .message-card p {
+    font-size: 16px;
+  }
+}
+/* ✍️ Handwritten Letter Style */
+
+.message-card {
+  background: rgba(255, 255, 255, 0.9);
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 50px 60px;
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+  transform: rotate(-0.5deg);
+}
+
+/* Title */
+.letter-header h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 42px;
+  text-align: center;
+  color: #000;
+  margin-bottom: 35px;
+}
+
+/* Body */
+.letter-body {
+  font-family: 'Dancing Script', cursive;
+  font-size: 22px;
+  line-height: 2;
+  color: #000;
+}
+
+/* Paragraph spacing */
+.letter-body p {
+  margin-bottom: 22px;
+}
+
+/* Greeting */
+.salutation {
+  font-size: 24px;
+}
+
+/* Closing */
+.closing {
+  margin-top: 30px;
+  font-size: 24px;
+}
+
+/* Signature */
+.signature {
+  margin-top: 35px;
+  text-align: right;
+  font-size: 26px;
+}
+
+/* Paper texture illusion */
+.message-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    transparent,
+    transparent 28px,
+    rgba(0,0,0,0.03) 29px
+  );
+  pointer-events: none;
+}
