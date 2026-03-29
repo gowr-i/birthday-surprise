@@ -30,3 +30,14 @@ window.onload = () => {
 
 // Backup: any tap ensures music
 document.addEventListener("click", playMusic, { once: true });
+function startMusic(){
+  const music = document.getElementById("bgMusic");
+  const overlay = document.getElementById("musicOverlay");
+
+  if(music){
+    music.volume = 0.6;
+    music.play();
+  }
+
+  overlay.style.display = "none";
+}
