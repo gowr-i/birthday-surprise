@@ -1,27 +1,36 @@
-function enableMusic() {
+function startMusic() {
   const music = document.getElementById("bgMusic");
-  if (!music) return;
 
-  music.volume = 0.5;
-  music.play().catch(() => {});
+  if (music) {
+    music.volume = 0.6;
+    music.play().then(() => {
+      sessionStorage.setItem("musicStarted", "true");
+    }).catch(() => {
+      console.log("Music blocked");
+    });
+  }
 }
 
-window.onload = () => {
-  if (sessionStorage.getItem("musicAllowed") === "true") {
-    enableMusic();
-  }
-};
-
-// first user interaction unlocks music
-document.addEventListener("click", () => {
-  sessionStorage.setItem("musicAllowed", "true");
-  enableMusic();
-}, { once: true });
-
 function openCake() {
-  window.location.href = "cake.html";
+  startMusic();  
+
+  setTimeout(() => {
+    window.location.href = "cake.html";  
+  }, 500); // small delay so music starts properly
 }
 
 function openMessage() {
-  window.location.href = "message.html";
+  startMusic();
+
+  setTimeout(() => {
+    window.location.href = "message.html";
+  }, 500);
 }
+
+// Continue music on other pages
+window.onload = () => {
+  if (sessionStorage.getItem("musicStarted")) {
+    const music = document.getElementById("bgMusic");
+    if (music) music.play();
+  }
+};
