@@ -5,14 +5,15 @@ body{
   text-align:center;
 }
 
-.bg{
-  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+.bg {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;   
+  padding-top: 80px;         
+  padding-bottom: 40px;
 }
-
 .center{
   text-align:center;
 }
