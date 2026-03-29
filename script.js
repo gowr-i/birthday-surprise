@@ -1,36 +1,32 @@
-function startMusic() {
+// Play music safely
+function playMusic() {
   const music = document.getElementById("bgMusic");
+  if (!music) return;
 
-  if (music) {
-    music.volume = 0.6;
-    music.play().then(() => {
-      sessionStorage.setItem("musicStarted", "true");
-    }).catch(() => {
-      console.log("Music blocked");
-    });
-  }
+  music.loop = true;
+  music.volume = 0.6;
+
+  music.play().catch(() => {});
 }
 
+// Page 1 → Cake
 function openCake() {
-  startMusic();  
-
-  setTimeout(() => {
-    window.location.href = "cake.html";  
-  }, 500); // small delay so music starts properly
+  sessionStorage.setItem("allowMusic", "true");
+  window.location.href = "cake.html";
 }
 
+// Cake → Message
 function openMessage() {
-  startMusic();
-
-  setTimeout(() => {
-    window.location.href = "message.html";
-  }, 500);
+  sessionStorage.setItem("allowMusic", "true");
+  window.location.href = "message.html";
 }
 
-// Continue music on other pages
+// On load (Cake & Message)
 window.onload = () => {
-  if (sessionStorage.getItem("musicStarted")) {
-    const music = document.getElementById("bgMusic");
-    if (music) music.play();
+  if (sessionStorage.getItem("allowMusic")) {
+    playMusic();
   }
 };
+
+// Backup: any tap ensures music
+document.addEventListener("click", playMusic, { once: true });
